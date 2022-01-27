@@ -7,7 +7,7 @@ export const ApplicationViews = () => {
         <>
         <Route path="/login">
             <LogIn/>
-        </Route>
+        </Route >
             <Route path="/Register">
                 <Register />
             </Route>
