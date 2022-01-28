@@ -10,6 +10,6 @@ export const Register =()=>{
         
         </>
     )
-    //git commit
+    //git commit 
 
 }

@@ -13,5 +13,5 @@ export const ApplicationViews = () => {
             </Route>
         </>
     )
-    //going to commit
+    //going to commit 
 }
