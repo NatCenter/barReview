@@ -28,6 +28,7 @@ export const ApplicationViews = () => {
         <Route path="/login">
             <LogIn/>
         </Route >
+        
             <Route path="/register">
                 <Register />
             </Route>
