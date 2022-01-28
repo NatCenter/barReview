@@ -21,7 +21,7 @@ export const LogIn =()=>{
                     history.push("/barlist")
                 } else {
                     window.alert("please enter an email")
-                    existDialog.current.showModal()
+                    //existDialog.current.showModal()
                 }
             })
     }
