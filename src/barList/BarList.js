@@ -6,26 +6,34 @@ import { useEffect, useState } from "react/cjs/react.development"
 
 
 export const BarList =()=>{
-    const [name,setName]=useState("")
+    
+    const [bars,barList]=useState([])
  
+    
     useEffect(
         ()=>{
-            const userId=localStorage.getItem("bar_user")
-            return fetch (`http://localhost:8088/users/${userId}`)
+            fetch(`http://localhost:8088/bars`)
             .then(res=>res.json())
-            .then(currentUser=>setName(currentUser.name))
+            .then((barArray)=>{
+                barList(barArray)
+            })
         },
         []
-        
-        
     )
 
     return (
         <>
         
-        <p>Hello {name} <Link to="/login">logout</Link></p>
 
         <h1>Bar list</h1>
+        {
+            bars.map(
+                (barObject)=>{
+                    return <p key={`barid--${barObject.id}`}> <Link to={`/barlist/${barObject.id}`}> {barObject.barName}</Link></p>
+                }
+            )
+        }
+
         </>
     )
 }
