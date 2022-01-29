@@ -4,6 +4,8 @@ import { Route,Redirect  } from "react-router-dom"
 import { Register } from "./LogIn/Register"
 import { LogIn } from "./LogIn/LogIn"
 import { BarList } from "./barList/BarList"
+import { NavBar } from "./barList/NavBar"
+import { Reviews } from "./Reviews/Reviews"
 export const ApplicationViews = () => {
     return (
         <>
@@ -12,9 +14,14 @@ export const ApplicationViews = () => {
                 if(localStorage.getItem("bar_user")){
                     return (
                         <>
-                        <Route path="/barlist">
+                          <NavBar/>
+                        <Route exact path="/barlist">
                         <BarList />
                             </Route>
+                            <Route exact path="/barlist/:barId(\d+)">
+                        <Reviews />
+                            </Route>
+                          
                         </>
                     )
                 }else{
@@ -36,5 +43,5 @@ export const ApplicationViews = () => {
 
         </>
     )
-    //first commit
+    
 }
