@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import { useParams } from "react-router-dom";
+import "./Reviews.css"
+
+
 export const Reviews = () => {
     const [bar,showBarName]=useState({})
     const {barId}=useParams()
@@ -18,8 +21,16 @@ export const Reviews = () => {
     )
     return (
         <>
-        
+       
+
         <h1>{bar.barName}</h1>
+        
+           <img src={bar.imageURL}></img>  
+           <img src={bar.imageURL2}></img>  
+           <img src={bar.imageURL3}></img>  
+           <img src={bar.imageURL4}></img>  
+        
+
         </>
 
     )

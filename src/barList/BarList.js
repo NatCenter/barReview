@@ -24,7 +24,7 @@ export const BarList =()=>{
     return (
         <>
         
-
+        
         <h1>Bar list</h1>
         {
             bars.map(
