@@ -6,30 +6,52 @@ import "./Reviews.css"
 
 
 export const Reviews = () => {
-    const [bar,showBarName]=useState({})
+    const [bar,changeBar]=useState({})
+    const [images,changeImages]=useState([])
+    
     const {barId}=useParams()
+    const {imageURL}=useParams()
+    
+    
     useEffect(
         ()=>{
             return fetch(`http://localhost:8088/bars/${barId}`)
-            .then(renderId=>renderId.json())
-            .then((data)=>{
-                showBarName(data)
+            .then(barData=>barData.json())
+            .then((bar)=>{
+                changeBar(bar)
                 
+                return fetch(`http://localhost:8088/imageBars?barId=${bar.id}`)
+                .then(renderId=>renderId.json())
+                .then((data)=>{
+                    changeImages(data)
+                })
             })
         },[barId]
-
+    
     )
+    
+
+    console.log(images)
     return (
         <>
        
 
         <h1>{bar.barName}</h1>
-        
-           <img src={bar.imageURL}></img>  
-           <img src={bar.imageURL2}></img>  
-           <img src={bar.imageURL3}></img>  
-           <img src={bar.imageURL4}></img>  
-        
+            
+          {
+               images.map((image)=>{
+                  return(
+                    <>
+                   <img src={image.imageURL1}/>
+                   <img src={image.imageURL2}/>
+                   <img src={image.imageURL3}/>
+                   <img src={image.imageURL4}/>
+                   </>
+                   
+                   )
+               })
+          }
+           
 
         </>
 
