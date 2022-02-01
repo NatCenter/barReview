@@ -6,6 +6,7 @@ import { LogIn } from "./LogIn/LogIn"
 import { BarList } from "./barList/BarList"
 import { NavBar } from "./barList/NavBar"
 import { Reviews } from "./Reviews/Reviews"
+import { NewReviews } from "./Reviews/newReview"
 export const ApplicationViews = () => {
     return (
         <>
@@ -21,6 +22,13 @@ export const ApplicationViews = () => {
                             <Route exact path="/barlist/:barId(\d+)">
                         <Reviews />
                             </Route>
+                            <Route exact path="/barlist/newreview">
+                            <NewReviews/>
+
+                            </Route>
+                        
+
+                        
                           
                         </>
                     )
