@@ -1,21 +1,27 @@
- import { useEffect, useState } from "react/cjs/react.development"
+import { useEffect, useState } from "react/cjs/react.development";
 import { useParams } from "react-router-dom";
 import "./Reviews.css";
 
 export const Reviews = () => {
   const [bar, changeBar] = useState({});
-  
 
+  const [reviews, setUserReviews] = useState([]);
   const { barId } = useParams();
 
+
+
   useEffect(() => {
-    return fetch(`http://localhost:8088/bars/${barId}?_embed=imageBars&_embed=reviews`)
+     fetch(`http://localhost:8088/bars/${barId}?_embed=imageBars`)
       .then((data) => data.json())
       .then((barData) => {
         changeBar(barData);
-      });
+       return fetch(`http://localhost:8088/reviews?${barId}&_expand=user`)
+     
+      })
+      .then((res) => res.json())
+      .then((reviewsArray) => setUserReviews(reviewsArray));
   }, []);
-  
+
   return (
     <>
       <h1>{bar.barName}</h1>
@@ -30,18 +36,19 @@ export const Reviews = () => {
           </>
         );
       })}
+      
+
       <p>
-        {bar.reviews?.map((review) => {
+        {reviews.map((review) => {
           return (
             <>
+              
+              <p>{review.user.name}</p>
               <p>{review.reviewDes}</p>
             </>
           );
         })}
       </p>
-
-        
-
     </>
   );
 };
