@@ -15,7 +15,7 @@ export const Reviews = () => {
       .then((data) => data.json())
       .then((barData) => {
         changeBar(barData);
-       return fetch(`http://localhost:8088/reviews?${barId}&_expand=user`)
+       return fetch(`http://localhost:8088/reviews?barId=${barId}&_expand=user`)
      
       })
       .then((res) => res.json())
