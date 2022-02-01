@@ -44,6 +44,7 @@ export const Reviews = () => {
             <>
               
               <p>{review.user.name}</p>
+              <p>Star(s):{review.star}</p>
               <p>{review.reviewDes}</p>
             </>
           );
