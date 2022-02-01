@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import { Route } from "react-router-dom";
-import { useEffect, useState } from "react/cjs/react.development";
+ import { useEffect, useState } from "react/cjs/react.development"
 import { useParams } from "react-router-dom";
 import "./Reviews.css";
 
@@ -41,6 +39,9 @@ export const Reviews = () => {
           );
         })}
       </p>
+
+        
+
     </>
   );
 };

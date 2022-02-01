@@ -33,7 +33,7 @@ export const BarList =()=>{
                 }
             )
         }
-
+<Link to={'/barlist/newreview'}>Post your review</Link>
         </>
     )
 }
