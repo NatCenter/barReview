@@ -15,8 +15,9 @@ export const ApplicationViews = () => {
                 if(localStorage.getItem("bar_user")){
                     return (
                         <>
-                          <NavBar/>
+                          
                         <Route exact path="/barlist">
+                        <NavBar/>
                         <BarList />
                             </Route>
                             <Route exact path="/barlist/:barId(\d+)">
