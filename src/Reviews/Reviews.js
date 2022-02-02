@@ -13,7 +13,6 @@ export const Reviews = () => {
   
   
   
-
   useEffect(() => {
     fetch(`http://localhost:8088/bars/${barId}?_embed=imageBars`)
       .then((data) => data.json())
@@ -61,7 +60,16 @@ export const Reviews = () => {
               <p>{review.user.name}</p>
               <p>Star(s):{review.star}</p>
               <p>{review.reviewDes}</p>
-              
+                
+                  
+                
+                  <div class="reviewImages">
+                  <img src={review.userImageReview} />
+                  
+               
+                  </div>
+
+
               {getUserId===review.userId?<button
                 onClick={() => {
                   
