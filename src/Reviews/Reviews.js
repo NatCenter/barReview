@@ -26,9 +26,13 @@ export const Reviews = () => {
       .then((reviewsArray) => setUserReviews(reviewsArray));
   }, []);
   const deleteReviews = (id) => {
+  
     fetch(`http://localhost:8088/reviews/${id}`, {
       method: "DELETE",
-    });
+      
+    },
+    
+    );
   };
 
   
@@ -57,7 +61,9 @@ export const Reviews = () => {
               
               {getUserId===review.userId?<button
                 onClick={() => {
-                  deleteReviews(review.id);
+                  
+                  deleteReviews(review.id)
+                  
                 }}
               >
                 Delete
