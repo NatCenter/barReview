@@ -6,22 +6,32 @@ export const Reviews = () => {
   const [bar, changeBar] = useState({});
 
   const [reviews, setUserReviews] = useState([]);
+  
   const { barId } = useParams();
-
-
+  const getUserId = Number( localStorage.getItem("bar_user"));
+  
+  
+  
 
   useEffect(() => {
-     fetch(`http://localhost:8088/bars/${barId}?_embed=imageBars`)
+    fetch(`http://localhost:8088/bars/${barId}?_embed=imageBars`)
       .then((data) => data.json())
       .then((barData) => {
         changeBar(barData);
-       return fetch(`http://localhost:8088/reviews?barId=${barId}&_expand=user`)
-     
+        return fetch(
+          `http://localhost:8088/reviews?barId=${barId}&_expand=user`
+        );
       })
       .then((res) => res.json())
       .then((reviewsArray) => setUserReviews(reviewsArray));
   }, []);
+  const deleteReviews = (id) => {
+    fetch(`http://localhost:8088/reviews/${id}`, {
+      method: "DELETE",
+    });
+  };
 
+  
   return (
     <>
       <h1>{bar.barName}</h1>
@@ -36,16 +46,25 @@ export const Reviews = () => {
           </>
         );
       })}
-      
 
       <p>
         {reviews.map((review) => {
           return (
             <>
-              
               <p>{review.user.name}</p>
               <p>Star(s):{review.star}</p>
               <p>{review.reviewDes}</p>
+              
+              {getUserId===review.userId?<button
+                onClick={() => {
+                  deleteReviews(review.id);
+                }}
+              >
+                Delete
+              </button>:
+              <h1></h1>
+               }
+              
             </>
           );
         })}
