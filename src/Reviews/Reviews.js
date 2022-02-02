@@ -6,6 +6,7 @@ export const Reviews = () => {
   const [bar, changeBar] = useState({});
 
   const [reviews, setUserReviews] = useState([]);
+  const [reviewsDeleted,updatedReviews]=useState(0)
   
   const { barId } = useParams();
   const getUserId = Number( localStorage.getItem("bar_user"));
@@ -24,15 +25,17 @@ export const Reviews = () => {
       })
       .then((res) => res.json())
       .then((reviewsArray) => setUserReviews(reviewsArray));
-  }, []);
+  }, [reviewsDeleted]);
   const deleteReviews = (id) => {
   
-    fetch(`http://localhost:8088/reviews/${id}`, {
-      method: "DELETE",
+   return fetch(`http://localhost:8088/reviews/${id}`, {
+      method: "DELETE"
       
-    },
+    }
     
-    );
+    ).then(()=>{
+      updatedReviews(reviewsDeleted+1)
+    });
   };
 
   
