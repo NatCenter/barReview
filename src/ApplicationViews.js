@@ -23,6 +23,7 @@ export const ApplicationViews = () => {
                             </Route>
                             
                             <Route exact path="/barlist/:barId(\d+)">
+                            <NavBar/>
                         <Reviews />
                             </Route>
                             <Route exact path="/barlist/newreview">
