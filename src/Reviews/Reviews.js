@@ -36,12 +36,50 @@ export const Reviews = () => {
       updatedReviews(reviewsDeleted+1)
     });
   };
+  const barMusic=bar.liveMusic
+  let trueOrFalseLiveMusic
+
+   barMusic===true? trueOrFalseLiveMusic="yes" :trueOrFalseLiveMusic="no"
+  
+  
+  const barMask=bar.maskRequired
+  let trueOrFalseMaskRequeired
+  barMask ===true? trueOrFalseMaskRequeired="yes":trueOrFalseMaskRequeired="no"
+
+ 
+  
+  const barVaccineCard=bar.vaccineCard
+  let trueOrFalseVaccineCard
+  barVaccineCard===true?trueOrFalseVaccineCard="yes": trueOrFalseVaccineCard="no"
+
+
 
   
+  const barSocialDistancing=bar.socialDistancing
+  let trueorFalseSocialDistcting
+  barSocialDistancing===true?trueorFalseSocialDistcting="yes":trueorFalseSocialDistcting="no"
+
+
+
+  const barStaffMask=bar.staffMask
+  let barStaffMaskedTrueOrFalse
+  barStaffMask===true?barStaffMaskedTrueOrFalse="yes":barStaffMaskedTrueOrFalse="no"
+
+ 
   return (
+    
     <>
       <h1>{bar.barName}</h1>
+      <p>Does the bar have live music:  {trueOrFalseLiveMusic}</p>
+      <p>Do you need a mask to get in:  {trueOrFalseMaskRequeired}</p>
+      <p>Do you need a vaccine card to get in:  {trueOrFalseVaccineCard}</p>
+      
+      <p>Do you have to social distancing:  {trueorFalseSocialDistcting}</p>
+      <p>Is the staffed masked :  {barStaffMaskedTrueOrFalse}</p>
+      
+
       <p>{bar.address}</p>
+      
       {bar.imageBars?.map((image) => {
         return (
           <>
@@ -79,7 +117,7 @@ export const Reviews = () => {
               >
                 Delete
               </button>:
-              <h1></h1>
+              <p></p>
                }
               
             </>
