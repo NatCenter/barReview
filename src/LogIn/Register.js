@@ -13,50 +13,46 @@ export const Register = () => {
   };
 
   const handletheUserRegistion = (e) => {
-    e.preventDefault()
-    checkForExistingUser()
-    .then((userExists)=>{
-        if(!userExists){
-            fetch("http://localhost:8088/users",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body: JSON.stringify(user)
-            })
-            .then (res=>res.json())
-            .then(createdUser=>{
-                if (createdUser.hasOwnProperty("id")){
-                    localStorage.setItem("bar_user",createdUser.id)
-                    history.push("/barlist")
-                }
-            })
-        }
-        else {
-            conflicingDialog.current.showModal()
-        }
-    })
+    e.preventDefault();
+    checkForExistingUser().then((userExists) => {
+      if (!userExists) {
+        fetch("http://localhost:8088/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((createdUser) => {
+            if (createdUser.hasOwnProperty("id")) {
+              localStorage.setItem("bar_user", createdUser.id);
+              history.push("/barlist");
+            }
+          });
+      } else {
+        conflicingDialog.current.showModal();
+      }
+    });
   };
-  const updateUser=(evt)=>{
-      const copy={...user}
-      copy[evt.target.id]=evt.target.value
-      setUser(copy)
-      console.log(setUser(copy))
-  }
+  const updateUser = (evt) => {
+    const copy = { ...user };
+    copy[evt.target.id] = evt.target.value;
+    setUser(copy);
+    console.log(setUser(copy));
+  };
   return (
     <>
-    <form onSubmit={handletheUserRegistion}>
-
-      <h1>Register Email </h1>
-      <p>
-        E-mail: <input type="text" id="email" onChange={updateUser}/>
-      </p>
-      <p>
-        Name: <input type="text" id="name"onChange={updateUser} />
-      </p>
-      <button type="submit">Submit</button>
-    </form>
+      <form onSubmit={handletheUserRegistion}>
+        <h1>Register Email </h1>
+        <p>
+          E-mail: <input type="text" id="email" onChange={updateUser} />
+        </p>
+        <p>
+          Name: <input type="text" id="name" onChange={updateUser} />
+        </p>
+        <button type="submit">Submit</button>
+      </form>
     </>
   );
-  //first commit
 };

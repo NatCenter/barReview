@@ -1,24 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ApplicationViews } from './ApplicationViews';
-import './index.css';
-import { LogIn } from './LogIn/LogIn';
-import { Register } from './LogIn/Register';
-import { BrowserRouter } from "react-router-dom"
+import React from "react";
+import ReactDOM from "react-dom";
+import { ApplicationViews } from "./ApplicationViews";
+import "./index.css";
+import { LogIn } from "./LogIn/LogIn";
+import { Register } from "./LogIn/Register";
+import { BrowserRouter } from "react-router-dom";
 
-import reportWebVitals from './reportWebVitals';
-import { BarList } from './barList/BarList';
+import reportWebVitals from "./reportWebVitals";
+import { BarList } from "./barList/BarList";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter  >
-   
-    <ApplicationViews/>
+    <BrowserRouter>
+      <ApplicationViews />
     </BrowserRouter>
-    
-    
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
