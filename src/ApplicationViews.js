@@ -36,7 +36,10 @@ export const ApplicationViews = () => {
           }
         }}
       />
-      <Route path="/login">
+      <Route exact path="/">
+        <LogIn />
+      </Route>
+      <Route exact path="/login">
         <LogIn />
       </Route>
 

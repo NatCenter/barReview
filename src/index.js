@@ -13,6 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ApplicationViews />
+      
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

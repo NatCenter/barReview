@@ -77,10 +77,8 @@ export const Reviews = () => {
         return (
           <>
             <div className="barImages" key={image.id}>
-              <img src={image.imageURL1} />
-              <img src={image.imageURL2} />
-              <img src={image.imageURL3} />
-              <img src={image.imageURL4} />
+              <img src={image.imageURL} />
+            
             </div>
            
           </>
