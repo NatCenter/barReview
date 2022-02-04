@@ -14,7 +14,13 @@ export const NavBar = () => {
   return (
     <>
       <p>
-        Hello {name} <Link to="/login">logout</Link>{" "}
+        Hello {name} <Link to="/login"
+        onClick={
+          ()=>{
+              localStorage.removeItem("bar_user")
+          }
+        }
+        >logout</Link>{" "}
         <Link to="/barlist"> Home</Link>
       </p>
     </>
