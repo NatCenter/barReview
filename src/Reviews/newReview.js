@@ -3,6 +3,7 @@ import { useEffect, useState } from "react/cjs/react.development";
 import ReactStars from "react-rating-stars-component";
 import React from "react";
 import { render } from "react-dom";
+import "./newReviewCss.css";
 
 export const NewReviews = () => {
   const [newReview, updateReview] = useState({
@@ -10,7 +11,7 @@ export const NewReviews = () => {
     barId: "",
     star: "",
     userImageReview: "",
-  
+
     userId: parseInt(localStorage.getItem("bar_user")),
   });
   const history = useHistory();
@@ -19,8 +20,8 @@ export const NewReviews = () => {
       reviewDes: newReview.description,
       barId: parseInt(newReview.barId),
       star: newReview.star,
-      userImageReview:newReview.userImageReview,
-     
+      userImageReview: newReview.userImageReview,
+
       userId: parseInt(localStorage.getItem("bar_user")),
     };
 
@@ -39,6 +40,7 @@ export const NewReviews = () => {
   };
   return (
     <>
+    <div className="newReviewForm">
       <h1>Place your review here!</h1>
       <label>Review:</label>
       <textarea
@@ -69,6 +71,7 @@ export const NewReviews = () => {
           updateReview(copy);
         }}
       />
+      <label>Star(s)</label>
       <ReactStars
         count={5}
         onChange={(evt) => {
@@ -83,6 +86,7 @@ export const NewReviews = () => {
       <button type="submit" onClick={sumbitReview}>
         Submit
       </button>
+      </div>
     </>
   );
 };

@@ -6,3 +6,18 @@ img {
     
 }
 img[src=""] { display: none; }
+.barImages{
+    display: flex;
+}
+.reviews{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.reviews>button{
+    width:50px;
+    vertical-align: middle;
+    
+}
