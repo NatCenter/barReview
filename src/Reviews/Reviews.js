@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import { useParams } from "react-router-dom";
 import "./Reviews.css";
+import { render } from "@testing-library/react";
+import ReactDOM from "react-dom";
+import React, { Component } from "react";
 
 export const Reviews = () => {
   const [bar, changeBar] = useState({});
 
   const [reviews, setUserReviews] = useState([]);
   const [reviewsDeleted, updatedReviews] = useState(0);
+  const [reviewsEdited,setReviewsEdited]=useState({
+    reviewDes:""
+  })
 
   const { barId } = useParams();
   const getUserId = Number(localStorage.getItem("bar_user"));
@@ -20,9 +26,12 @@ export const Reviews = () => {
           `http://localhost:8088/reviews?barId=${barId}&_expand=user`
         );
       })
+
       .then((res) => res.json())
       .then((reviewsArray) => setUserReviews(reviewsArray));
   }, [reviewsDeleted]);
+
+  //deleted reviews fetch
   const deleteReviews = (id) => {
     return fetch(`http://localhost:8088/reviews/${id}`, {
       method: "DELETE",
@@ -30,6 +39,8 @@ export const Reviews = () => {
       updatedReviews(reviewsDeleted + 1);
     });
   };
+  //true or false boolean
+
   const barMusic = bar.liveMusic;
   let trueOrFalseLiveMusic;
 
@@ -60,6 +71,83 @@ export const Reviews = () => {
   barStaffMask === true
     ? (barStaffMaskedTrueOrFalse = "yes")
     : (barStaffMaskedTrueOrFalse = "no");
+  //editing reviews
+  //react_devtools_backend.js:4061 Warning: render(...): Replacing React-rendered children with a new root component. If you intended to update the children of this node, you should instead have the existing children update their state and render the new components instead of calling ReactDOM.render.
+  // to render out two create elements in react by using the react fragment we can render out as many new elements as we want!
+  //https://egghead.io/lessons/react-render-two-elements-side-by-side-with-react-fragments
+  //use the defaultValue to make the review description in the box editable
+
+  let change;
+  
+  const onChange = (event) => {
+    change = event.target.value;
+    setReviewsEdited(change);
+    return change;
+  };
+
+  const buttonClick = (e,b) => {
+    const theEvent = change;
+    let getReviewId = e;
+    let getReviewDes=b;
+    //console.log(getReviewId)
+    
+    const reactFragment = (
+      <React.Fragment>
+        <p key={getReviewId}>{theEvent}</p>
+      </React.Fragment>
+    );
+      
+    ReactDOM.hydrate(reactFragment, document.getElementById(getReviewId));
+
+    return fetch(`http://localhost:8088/reviews/${getReviewId}/?_expand=reviewsDes`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+       reviewDes:theEvent
+        
+      }),
+    })
+      .then((data) => data.json())
+      .then(() => {
+        setReviewsEdited(change);
+      }),[];
+  };
+
+  let truOrFalse = true;
+  const editReview = (reviewId, theReviewDes) => {
+    if (truOrFalse) {
+      truOrFalse = false;
+      const element = reviewId;
+      let des = theReviewDes;
+
+      const reactFragment = (
+        <React.Fragment>
+          <>
+            <input
+              key={element}
+              type="text"
+              defaultValue={des}
+              onChange={onChange}
+            />
+
+            <button
+              onClick={() => {
+                buttonClick(element,des);
+              }}
+            >
+              done
+            </button>
+          </>
+        </React.Fragment>
+      );
+
+      ReactDOM.render(reactFragment, document.getElementById(element));
+    } else {
+      truOrFalse = true;
+    }
+  };
 
   return (
     <>
@@ -77,10 +165,8 @@ export const Reviews = () => {
         return (
           <>
             <div className="barImages" key={image.id}>
-              <img src={image.imageURL} />
-            
+              <img src={image.imageURL} key={image.id} />
             </div>
-           
           </>
         );
       })}
@@ -90,22 +176,36 @@ export const Reviews = () => {
             <div className="reviews" key={review.id}>
               <p>User Name: {review.user.name} </p>
               <p>Star(s):{review.star}</p>
-              <p> {review.reviewDes}</p>
+
+              <div id={review.id}>
+                <p id="elementButton"></p>
+                {review.reviewDes}{" "}
+              </div>
 
               <p>
                 <img src={review.userImageReview} />
               </p>
 
               {getUserId === review.userId ? (
-                <button
-                  onClick={() => {
-                    deleteReviews(review.id);
-                  }}
-                >
-                  Delete
-                </button>
+                <>
+                  <button
+                    onClick={() => {
+                      editReview(review.id, review.reviewDes);
+                    }}
+                  >
+                    edit
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      deleteReviews(review.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </>
               ) : (
-                <p></p>
+                <p key={review.id}></p>
               )}
             </div>
           </>
