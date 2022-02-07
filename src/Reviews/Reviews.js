@@ -4,15 +4,18 @@ import "./Reviews.css";
 import { render } from "@testing-library/react";
 import ReactDOM from "react-dom";
 import React, { Component } from "react";
+import ReactStars from "react-rating-stars-component";
+import star from "react-rating-stars-component/dist/star";
 
 export const Reviews = () => {
   const [bar, changeBar] = useState({});
 
   const [reviews, setUserReviews] = useState([]);
   const [reviewsDeleted, updatedReviews] = useState(0);
-  const [reviewsEdited,setReviewsEdited]=useState({
-    reviewDes:""
-  })
+  const [reviewsEdited, setReviewsEdited] = useState({
+    reviewDes: "",
+    star: "",
+  });
 
   const { barId } = useParams();
   const getUserId = Number(localStorage.getItem("bar_user"));
@@ -78,50 +81,76 @@ export const Reviews = () => {
   //use the defaultValue to make the review description in the box editable
 
   let change;
-  
+  let starChange;
+  let imageURLChange
   const onChange = (event) => {
     change = event.target.value;
+
     setReviewsEdited(change);
+
     return change;
   };
+  const changeStarts=(numberOfStarts)=>{
+    starChange=numberOfStarts
+    setReviewsEdited(starChange)
+    return starChange
+  }   
 
-  const buttonClick = (e,b) => {
+  const changeImage=(userImages)=>{
+    imageURLChange=userImages.target.value
+    console.log(imageURLChange)
+    setReviewsEdited(imageURLChange)
+    return imageURLChange
+  }
+  const buttonClick = (e) => {
     const theEvent = change;
+    const changeStars=starChange
+    const changeImages=imageURLChange
     let getReviewId = e;
-    let getReviewDes=b;
-    //console.log(getReviewId)
     
+
     const reactFragment = (
       <React.Fragment>
-        <p key={getReviewId}>{theEvent}</p>
+          <p>Star(s){changeStars}</p>
+        <p>{theEvent}</p>
+        <img src={changeImages}/>
       </React.Fragment>
     );
-      
+
     ReactDOM.hydrate(reactFragment, document.getElementById(getReviewId));
 
-    return fetch(`http://localhost:8088/reviews/${getReviewId}/?_expand=reviewsDes`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-       reviewDes:theEvent
-        
-      }),
-    })
-      .then((data) => data.json())
-      .then(() => {
-        setReviewsEdited(change);
-      }),[];
+    return (
+      fetch(
+        `http://localhost:8088/reviews/${getReviewId}/?_expand=reviewsDes`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            reviewDes: theEvent,
+            star:changeStars,
+            userImageReview:changeImages
+          }),
+        }
+      )
+        .then((data) => data.json())
+        .then(() => {
+          setReviewsEdited(change);
+        }),
+      []
+    );
   };
 
   let truOrFalse = true;
-  const editReview = (reviewId, theReviewDes) => {
+  const editReview = (reviewId, theReviewDes, reviewStar,reviewImage) => {
     if (truOrFalse) {
       truOrFalse = false;
       const element = reviewId;
       let des = theReviewDes;
-
+      const star = reviewStar;
+      const image=reviewImage;
+      
       const reactFragment = (
         <React.Fragment>
           <>
@@ -131,10 +160,22 @@ export const Reviews = () => {
               defaultValue={des}
               onChange={onChange}
             />
-
+            <ReactStars
+              count={5}
+              size={24}
+              activeColor="#ffd700"
+              onChange={changeStarts}
+              value={star}
+            />
+          <label>Change your image by copy and pasting a new url </label>
+          <input
+          type="text"
+          defaultValue={image}
+          onChange={changeImage}
+          />
             <button
               onClick={() => {
-                buttonClick(element,des);
+                buttonClick(element, star);
               }}
             >
               done
@@ -175,22 +216,24 @@ export const Reviews = () => {
           <>
             <div className="reviews" key={review.id}>
               <p>User Name: {review.user.name} </p>
-              <p>Star(s):{review.star}</p>
+             
 
               <div id={review.id}>
+              <p >Star(s):{review.star}</p>
                 <p id="elementButton"></p>
                 {review.reviewDes}{" "}
-              </div>
-
-              <p>
+                <p>
                 <img src={review.userImageReview} />
               </p>
 
+              </div>
+
+              
               {getUserId === review.userId ? (
                 <>
                   <button
                     onClick={() => {
-                      editReview(review.id, review.reviewDes);
+                      editReview(review.id, review.reviewDes, review.star,review.userImageReview);
                     }}
                   >
                     edit
