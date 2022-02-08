@@ -82,7 +82,7 @@ export const Reviews = () => {
 
   let change;
   let starChange;
-  let imageURLChange
+  let imageURLChange;
   const onChange = (event) => {
     change = event.target.value;
 
@@ -90,30 +90,29 @@ export const Reviews = () => {
 
     return change;
   };
-  const changeStarts=(numberOfStarts)=>{
-    starChange=numberOfStarts
-    setReviewsEdited(starChange)
-    return starChange
-  }   
+  const changeStarts = (numberOfStarts) => {
+    starChange = numberOfStarts;
+    setReviewsEdited(starChange);
+    return starChange;
+  };
 
-  const changeImage=(userImages)=>{
-    imageURLChange=userImages.target.value
-    console.log(imageURLChange)
-    setReviewsEdited(imageURLChange)
-    return imageURLChange
-  }
+  const changeImage = (userImages) => {
+    imageURLChange = userImages.target.value;
+    console.log(imageURLChange);
+    setReviewsEdited(imageURLChange);
+    return imageURLChange;
+  };
   const buttonClick = (e) => {
     const theEvent = change;
-    const changeStars=starChange
-    const changeImages=imageURLChange
+    const changeStars = starChange;
+    const changeImages = imageURLChange;
     let getReviewId = e;
-    
 
     const reactFragment = (
       <React.Fragment>
-          <p>Star(s){changeStars}</p>
+        <p>Star(s){changeStars}</p>
         <p>{theEvent}</p>
-        <img src={changeImages}/>
+        <img src={changeImages} />
       </React.Fragment>
     );
 
@@ -129,8 +128,8 @@ export const Reviews = () => {
           },
           body: JSON.stringify({
             reviewDes: theEvent,
-            star:changeStars,
-            userImageReview:changeImages
+            star: changeStars,
+            userImageReview: changeImages,
           }),
         }
       )
@@ -143,14 +142,14 @@ export const Reviews = () => {
   };
 
   let truOrFalse = true;
-  const editReview = (reviewId, theReviewDes, reviewStar,reviewImage) => {
+  const editReview = (reviewId, theReviewDes, reviewStar, reviewImage) => {
     if (truOrFalse) {
       truOrFalse = false;
       const element = reviewId;
       let des = theReviewDes;
       const star = reviewStar;
-      const image=reviewImage;
-      
+      const image = reviewImage;
+
       const reactFragment = (
         <React.Fragment>
           <>
@@ -167,12 +166,8 @@ export const Reviews = () => {
               onChange={changeStarts}
               value={star}
             />
-          <label>Change your image by copy and pasting a new url </label>
-          <input
-          type="text"
-          defaultValue={image}
-          onChange={changeImage}
-          />
+            <label>Change your image by copy and pasting a new url </label>
+            <input type="text" defaultValue={image} onChange={changeImage} />
             <button
               onClick={() => {
                 buttonClick(element, star);
@@ -189,10 +184,66 @@ export const Reviews = () => {
       truOrFalse = true;
     }
   };
+  // slide show react tut
+  //https://tinloof.com/blog/how-to-build-an-auto-play-slideshow-with-react
+
+  const ShowBar = bar.imageBars?.map((images) => {
+    return (
+      <>
+        <img src={images.imageURL} />
+      </>
+    );
+  });
+  
+  const colors = [1, 2, 3, 4];
+
+  const [index, setIndex] = React.useState(0);
+  const delay = 3400;
+  React.useEffect(() => {
+    setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {};
+  }, [index]);
 
   return (
     <>
-      <h1>{bar.barName}</h1>
+     <h1 className="title">{bar.barName}</h1>   
+      <div className="slideshow">
+        <div
+          className="slideshowSlider"
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+        >
+          {colors.map((backgroundColor, index) => (
+            <div className="slide" key={index} style={{ backgroundColor }}>
+              
+              <div>
+                {ShowBar?ShowBar[index]:
+                  ""
+                }
+                </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="slideshowDots">
+          {colors.map((_, idx) => (
+            <div
+              key={idx}
+              className={`slideshowDot${index === idx ? " active" : ""}`}
+              onClick={() => {
+                setIndex(idx);
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
+      <div className="reviewTrueOrFalse">
       <p>Does the bar have live music: {trueOrFalseLiveMusic}</p>
       <p>Do you need a mask to get in: {trueOrFalseMaskRequeired}</p>
       <p>Do you need a vaccine card to get in: {trueOrFalseVaccineCard}</p>
@@ -201,39 +252,32 @@ export const Reviews = () => {
       <p>Is the staffed masked : {barStaffMaskedTrueOrFalse}</p>
 
       <p>Address: {bar.address}</p>
-
-      {bar.imageBars?.map((image) => {
-        return (
-          <>
-            <div className="barImages" key={image.id}>
-              <img src={image.imageURL} key={image.id} />
-            </div>
-          </>
-        );
-      })}
+      </div>
       {reviews.map((review) => {
         return (
           <>
             <div className="reviews" key={review.id}>
               <p>User Name: {review.user.name} </p>
-             
 
               <div id={review.id}>
-              <p >Star(s):{review.star}</p>
+                <p>Star(s):{review.star}</p>
                 <p id="elementButton"></p>
                 {review.reviewDes}{" "}
                 <p>
-                <img src={review.userImageReview} />
-              </p>
-
+                  <img src={review.userImageReview} />
+                </p>
               </div>
 
-              
               {getUserId === review.userId ? (
                 <>
                   <button
                     onClick={() => {
-                      editReview(review.id, review.reviewDes, review.star,review.userImageReview);
+                      editReview(
+                        review.id,
+                        review.reviewDes,
+                        review.star,
+                        review.userImageReview
+                      );
                     }}
                   >
                     edit
@@ -250,10 +294,15 @@ export const Reviews = () => {
               ) : (
                 <p key={review.id}></p>
               )}
+              
             </div>
+            
           </>
+          
         );
       })}
     </>
+    
   );
+  
 };

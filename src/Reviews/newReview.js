@@ -3,6 +3,8 @@ import { useEffect, useState } from "react/cjs/react.development";
 import ReactStars from "react-rating-stars-component";
 import React from "react";
 import { render } from "react-dom";
+
+
 import "./newReviewCss.css";
 
 export const NewReviews = () => {
@@ -51,6 +53,7 @@ export const NewReviews = () => {
           updateReview(copy);
         }}
       />
+      <br></br>
       <select
         onChange={(evt) => {
           const copy = { ...newReview };
@@ -63,7 +66,9 @@ export const NewReviews = () => {
         <option value={3}>Gertie's Whiskey Bar: Nashville, Tennessee</option>
         <option value={4}>Hops and Crafts</option>
       </select>
+      <br></br>
       <label>Upload image by copying and pasting the url </label>
+      
       <input
         onChange={(evt) => {
           const copy = { ...newReview };
@@ -71,19 +76,20 @@ export const NewReviews = () => {
           updateReview(copy);
         }}
       />
+      <br></br>
       <label>Star(s)</label>
       <ReactStars
         count={5}
         onChange={(evt) => {
           const copy = { ...newReview };
-
           copy.star = evt;
           updateReview(copy);
         }}
         size={24}
         activeColor="#ffd700"
       />
-      <button type="submit" onClick={sumbitReview}>
+      <br></br>
+      <button className="sumbitReview"  type="submit" onClick={sumbitReview}>
         Submit
       </button>
       </div>

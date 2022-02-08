@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
+import "./NavBar.css";
 
 export const NavBar = () => {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ export const NavBar = () => {
 
   return (
     <>
-      <p>
+      <p className="show">
         Hello {name} <Link to="/login"
         onClick={
           ()=>{
