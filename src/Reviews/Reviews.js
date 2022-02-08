@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import ReactStars from "react-rating-stars-component";
 import star from "react-rating-stars-component/dist/star";
+import Button from "@mui/material/Button";
 
 export const Reviews = () => {
   const [bar, changeBar] = useState({});
@@ -168,13 +169,14 @@ export const Reviews = () => {
             />
             <label>Change your image by copy and pasting a new url </label>
             <input type="text" defaultValue={image} onChange={changeImage} />
-            <button
+            <Button
+              variant="contained"
               onClick={() => {
                 buttonClick(element, star);
               }}
             >
               done
-            </button>
+            </Button>
           </>
         </React.Fragment>
       );
@@ -190,30 +192,20 @@ export const Reviews = () => {
   const ShowBar = bar.imageBars?.map((images) => {
     return (
       <>
-        <img src={images.imageURL} />
+        <div>
+          <img className="barImages"src={images.imageURL} />
+        </div>
       </>
     );
   });
-  
+
   const colors = [1, 2, 3, 4];
 
   const [index, setIndex] = React.useState(0);
-  const delay = 3400;
-  React.useEffect(() => {
-    setTimeout(
-      () =>
-        setIndex((prevIndex) =>
-          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
-        ),
-      delay
-    );
-
-    return () => {};
-  }, [index]);
 
   return (
     <>
-     <h1 className="title">{bar.barName}</h1>   
+      <h1 className="title">{bar.barName}</h1>
       <div className="slideshow">
         <div
           className="slideshowSlider"
@@ -221,12 +213,7 @@ export const Reviews = () => {
         >
           {colors.map((backgroundColor, index) => (
             <div className="slide" key={index} style={{ backgroundColor }}>
-              
-              <div>
-                {ShowBar?ShowBar[index]:
-                  ""
-                }
-                </div>
+              <div>{ShowBar ? ShowBar[index] : ""}</div>
             </div>
           ))}
         </div>
@@ -244,14 +231,14 @@ export const Reviews = () => {
         </div>
       </div>
       <div className="reviewTrueOrFalse">
-      <p>Does the bar have live music: {trueOrFalseLiveMusic}</p>
-      <p>Do you need a mask to get in: {trueOrFalseMaskRequeired}</p>
-      <p>Do you need a vaccine card to get in: {trueOrFalseVaccineCard}</p>
+        <p>Does the bar have live music: {trueOrFalseLiveMusic}</p>
+        <p>Do you need a mask to get in: {trueOrFalseMaskRequeired}</p>
+        <p>Do you need a vaccine card to get in: {trueOrFalseVaccineCard}</p>
 
-      <p>Do you have to social distancing: {trueorFalseSocialDistcting}</p>
-      <p>Is the staffed masked : {barStaffMaskedTrueOrFalse}</p>
+        <p>Do you have to social distancing: {trueorFalseSocialDistcting}</p>
+        <p>Is the staffed masked : {barStaffMaskedTrueOrFalse}</p>
 
-      <p>Address: {bar.address}</p>
+        <p>Address: {bar.address}</p>
       </div>
       {reviews.map((review) => {
         return (
@@ -270,7 +257,8 @@ export const Reviews = () => {
 
               {getUserId === review.userId ? (
                 <>
-                  <button
+                  <Button
+                    variant="contained"
                     onClick={() => {
                       editReview(
                         review.id,
@@ -281,28 +269,24 @@ export const Reviews = () => {
                     }}
                   >
                     edit
-                  </button>
-
-                  <button
+                  </Button>
+                    <br></br>
+                  <Button
+                    variant="contained"
                     onClick={() => {
                       deleteReviews(review.id);
                     }}
                   >
                     Delete
-                  </button>
+                  </Button>
                 </>
               ) : (
                 <p key={review.id}></p>
               )}
-              
             </div>
-            
           </>
-          
         );
       })}
     </>
-    
   );
-  
 };

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react/cjs/react.development";
 import ReactStars from "react-rating-stars-component";
 import React from "react";
 import { render } from "react-dom";
-
+import Button from '@mui/material/Button';
 
 import "./newReviewCss.css";
 
@@ -89,9 +89,9 @@ export const NewReviews = () => {
         activeColor="#ffd700"
       />
       <br></br>
-      <button className="sumbitReview"  type="submit" onClick={sumbitReview}>
+      <Button className="sumbitReview"  variant="contained"  type="submit" onClick={sumbitReview}>
         Submit
-      </button>
+      </Button>
       </div>
     </>
   );
