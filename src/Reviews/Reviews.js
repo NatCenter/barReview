@@ -84,6 +84,16 @@ export const Reviews = () => {
   let change;
   let starChange;
   let imageURLChange;
+  const noChange=(element,reviewDes,Stars,images)=>{
+    const nonChange=<React.Fragment>
+      <p>Star(s){Stars}</p>
+      <p>{reviewDes}</p>
+      <img src={images}/>
+    </React.Fragment> 
+    ReactDOM.hydrate(nonChange, document.getElementById(element));
+}
+
+
   const onChange = (event) => {
     change = event.target.value;
 
@@ -116,6 +126,7 @@ export const Reviews = () => {
         <img src={changeImages} />
       </React.Fragment>
     );
+  
 
     ReactDOM.hydrate(reactFragment, document.getElementById(getReviewId));
 
@@ -174,8 +185,16 @@ export const Reviews = () => {
               onClick={() => {
                 buttonClick(element, star);
               }}
+            >done</Button>
+            
+            <Button
+              onClick={() => {
+                noChange(element,des,star,image)
+                
+              }}
             >
-              done
+              
+              cancel
             </Button>
           </>
         </React.Fragment>
@@ -186,6 +205,8 @@ export const Reviews = () => {
       truOrFalse = true;
     }
   };
+
+
   // slide show react tut
   //https://tinloof.com/blog/how-to-build-an-auto-play-slideshow-with-react
 
@@ -193,7 +214,7 @@ export const Reviews = () => {
     return (
       <>
         <div>
-          <img className="barImages"src={images.imageURL} />
+          <img className="barImages" src={images.imageURL} />
         </div>
       </>
     );
@@ -270,7 +291,7 @@ export const Reviews = () => {
                   >
                     edit
                   </Button>
-                    <br></br>
+                  <br></br>
                   <Button
                     variant="contained"
                     onClick={() => {
