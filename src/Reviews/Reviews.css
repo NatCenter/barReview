@@ -8,16 +8,68 @@ img {
 img[src=""] { display: none; }
 .barImages{
     display: flex;
+    
+}
+.theBarimages{
+    display: flex;
+    flex-direction: row;
 }
 .reviews{
     display: flex;
     flex-direction: column;
+
     
 }
-
+.title{
+  padding-left: 35px;
+}
+.reviewTrueOrFalse{
+  padding-left: 35px;
+}
 
 .reviews>button{
     width:50px;
     vertical-align: middle;
     
+    
 }
+.reviews{
+  padding-left: 35px;
+}
+.slideshow {
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 500px;
+  }
+  .slideshowSlider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+  }
+  
+  .slide {
+    display: inline-block;
+    
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 40px;
+    
+  }
+  /* Buttons */
+.slideshowDots {
+    text-align: center;
+  }
+  .slideshowDot {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 15px 7px 0px;
+    background-color: #c4c4c4;
+  }
+  
+.slideshowDot.active {
+    background-color: #f0aa5a;
+  }

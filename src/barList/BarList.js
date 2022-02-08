@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
+import "./barList.css"
 
 export const BarList = () => {
   const [bars, barList] = useState([]);
@@ -15,6 +16,7 @@ export const BarList = () => {
 
   return (
     <>
+    <div className="barList">
       <h1>Bar list</h1>
       {bars.map((barObject) => {
         return (
@@ -28,6 +30,7 @@ export const BarList = () => {
         );
       })}
       <Link to={"/barlist/newreview"}>Post your review</Link>
+      </div>
     </>
   );
 };
