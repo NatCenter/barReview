@@ -84,15 +84,16 @@ export const Reviews = () => {
   let change;
   let starChange;
   let imageURLChange;
-  const noChange=(element,reviewDes,Stars,images)=>{
-    const nonChange=<React.Fragment>
-      <p>Star(s){Stars}</p>
-      <p>{reviewDes}</p>
-      <img src={images}/>
-    </React.Fragment> 
+  const noChange = (element, reviewDes, Stars, images) => {
+    const nonChange = (
+      <React.Fragment>
+        <p>Star(s){Stars}</p>
+        <p>{reviewDes}</p>
+        <img src={images} />
+      </React.Fragment>
+    );
     ReactDOM.hydrate(nonChange, document.getElementById(element));
-}
-
+  };
 
   const onChange = (event) => {
     change = event.target.value;
@@ -126,7 +127,6 @@ export const Reviews = () => {
         <img src={changeImages} />
       </React.Fragment>
     );
-  
 
     ReactDOM.hydrate(reactFragment, document.getElementById(getReviewId));
 
@@ -185,15 +185,15 @@ export const Reviews = () => {
               onClick={() => {
                 buttonClick(element, star);
               }}
-            >done</Button>
-            
+            >
+              done
+            </Button>
+
             <Button
               onClick={() => {
-                noChange(element,des,star,image)
-                
+                noChange(element, des, star, image);
               }}
             >
-              
               cancel
             </Button>
           </>
@@ -205,7 +205,6 @@ export const Reviews = () => {
       truOrFalse = true;
     }
   };
-
 
   // slide show react tut
   //https://tinloof.com/blog/how-to-build-an-auto-play-slideshow-with-react
@@ -278,28 +277,30 @@ export const Reviews = () => {
 
               {getUserId === review.userId ? (
                 <>
-                  <Button
-                    variant="contained"
-                    onClick={() => {
-                      editReview(
-                        review.id,
-                        review.reviewDes,
-                        review.star,
-                        review.userImageReview
-                      );
-                    }}
-                  >
-                    edit
-                  </Button>
-                  <br></br>
-                  <Button
-                    variant="contained"
-                    onClick={() => {
-                      deleteReviews(review.id);
-                    }}
-                  >
-                    Delete
-                  </Button>
+                  <p>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        editReview(
+                          review.id,
+                          review.reviewDes,
+                          review.star,
+                          review.userImageReview
+                        );
+                      }}
+                    >
+                      edit
+                    </Button>
+                    &nbsp;
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        deleteReviews(review.id);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </p>
                 </>
               ) : (
                 <p key={review.id}></p>
