@@ -23,7 +23,7 @@ export const NavBar = () => {
 
   return (
     <Box sx={{ flexGrow: 20 }}>
-      <AppBar position="static" style={{ background: '#f1982b;' }}>
+      <AppBar position="static" sx={{backgroundColor:"#EF6C00"}} >
         <Toolbar>
         
           <IconButton
