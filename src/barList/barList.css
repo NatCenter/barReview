@@ -1,3 +1,24 @@
 .barList{
-    padding-left: 35px;
+    padding-left: 66px;
+    color:rgb(255, 255, 255);
+   
+    height: 1000px; 
+}
+
+a{color:rgb(255, 255, 255)}
+.images{
+    background:url("https://cdn.pixabay.com/photo/2018/03/03/03/22/alcohol-3194824_960_720.jpg") no-repeat center ;
+    height: 100%; 
+    margin-left: -9px;
+
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.box{
+    background:rgba(235, 93, 11, 0.9);
+    width: 300px;
+    height: 435px;
+    padding-left: 20px;
 }

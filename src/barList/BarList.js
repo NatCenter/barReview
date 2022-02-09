@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
+import Box from '@mui/material/Box';
 import "./barList.css"
 
 export const BarList = () => {
@@ -16,11 +17,20 @@ export const BarList = () => {
 
   return (
     <>
+       <div className="images">
     <div className="barList">
+     
+    <Box className="box">
+  
       <h1>Bar list</h1>
+      
       {bars.map((barObject) => {
+        
         return (
+   
+
           <div key={`barid--${barObject.id}`}>
+            
             <p >
               {" "}
               <Link to={`/barlist/${barObject.id}`}> {barObject.barName}</Link>
@@ -30,7 +40,10 @@ export const BarList = () => {
         );
       })}
       <Link to={"/barlist/newreview"}>Post your review</Link>
+            </Box>
       </div>
+        </div>
+     
     </>
   );
 };
