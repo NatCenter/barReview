@@ -10,3 +10,9 @@
 .navBar{
     background-color: red;
 }
+.imageLogo{
+    mix-blend-mode: multiply;
+    background-color: rgb(300, 300, 300);
+    width:  50px;
+    height: 50px;
+}

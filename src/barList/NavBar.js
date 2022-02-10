@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { createTheme } from '@mui/material/styles';
-
+import barLogo from "./BarView.png"
 import "./NavBar.css";
 
 export const NavBar = () => {
@@ -33,7 +33,7 @@ export const NavBar = () => {
             aria-label="menu"
             sx={{ mr: -3 }}
           ></IconButton>
-
+            <img className="imageLogo"src={barLogo}/>
           <Button  variant="h6" component={Link} sx={{ fontSize: 22} } to="/barlist"  >
             Home
           </Button>{" "}
