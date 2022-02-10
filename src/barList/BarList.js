@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Box from '@mui/material/Box';
 import "./barList.css"
-
+// mvp
 export const BarList = () => {
   const [bars, barList] = useState([]);
 

@@ -15,6 +15,7 @@ img[src=""] { display: none; }
     
 }
 
+
 .reviews{
     display: flex;
     flex-direction: column;
@@ -75,3 +76,4 @@ img[src=""] { display: none; }
 .slideshowDot.active {
     background-color: #ff5900;
   }
+  /*mvp */
