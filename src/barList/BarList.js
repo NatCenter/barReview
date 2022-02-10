@@ -33,7 +33,7 @@ export const BarList = () => {
             
             <p >
               {" "}
-              <Link to={`/barlist/${barObject.id}`}> {barObject.barName}</Link>
+              <Link to={`/barlist/${barObject.id}`} className="links"> {barObject.barName}</Link>
             </p>
             <p>Total Reviews:{barObject.reviews.length}</p>
           </div>

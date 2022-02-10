@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { ApplicationViews } from "../ApplicationViews";
-
+import Button from "@mui/material/Button";
 export const LogIn = () => {
   const [email, set] = useState("");
   const existDialog = useRef();
@@ -32,9 +32,9 @@ export const LogIn = () => {
           E-mail:{" "}
           <input type="text" onChange={(evt) => set(evt.target.value)} />
         </p>
-        <button type="submit">Enter</button>
+        <Button variant="contained" type="submit">Enter</Button>
         <p>
-          <Link to="/register"> New User click here to log in</Link>
+          <Link to="/register" > New User click here to log in</Link>
         </p>
       </form>
     </>
