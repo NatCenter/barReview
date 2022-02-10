@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-
+import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
 
 export const Register = () => {
@@ -51,7 +51,7 @@ export const Register = () => {
         <p>
           Name: <input type="text" id="name" onChange={updateUser} />
         </p>
-        <button type="submit">Submit</button>
+        <Button variant="contained" type="submit">Submit</Button>
       </form>
     </>
   );

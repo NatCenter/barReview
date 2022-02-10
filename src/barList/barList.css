@@ -5,7 +5,7 @@
     height: 1000px; 
 }
 
-a{color:rgb(255, 255, 255)}
+.links{color:rgb(255, 255, 255)}
 .images{
     background:url("https://cdn.pixabay.com/photo/2018/03/03/03/22/alcohol-3194824_960_720.jpg") no-repeat center ;
     height: 100%; 
