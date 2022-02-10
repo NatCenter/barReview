@@ -7,6 +7,7 @@ import { BarList } from "./barList/BarList";
 import { NavBar } from "./barList/NavBar";
 import { Reviews } from "./Reviews/Reviews";
 import { NewReviews } from "./Reviews/newReview";
+//mvp
 export const ApplicationViews = () => {
   return (
     <>

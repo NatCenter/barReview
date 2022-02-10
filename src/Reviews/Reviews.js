@@ -7,6 +7,7 @@ import React, { Component } from "react";
 import ReactStars from "react-rating-stars-component";
 import star from "react-rating-stars-component/dist/star";
 import Button from "@mui/material/Button";
+//mvp
 
 export const Reviews = () => {
   const [bar, changeBar] = useState({});

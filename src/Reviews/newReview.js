@@ -6,6 +6,7 @@ import { render } from "react-dom";
 import Button from '@mui/material/Button';
 
 import "./newReviewCss.css";
+//mvp
 
 export const NewReviews = () => {
   const [newReview, updateReview] = useState({
@@ -54,6 +55,8 @@ export const NewReviews = () => {
         }}
       />
       <br></br>
+
+      
       <select
         onChange={(evt) => {
           const copy = { ...newReview };
@@ -66,6 +69,8 @@ export const NewReviews = () => {
         <option value={3}>Gertie's Whiskey Bar: Nashville, Tennessee</option>
         <option value={4}>Hops and Crafts</option>
       </select>
+     
+     
       <br></br>
       <label>Upload image by copying and pasting the url </label>
       
