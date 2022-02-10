@@ -83,11 +83,11 @@ export const Reviews = () => {
 
   let change;
   let starChange;
-  let imageURLChange;
+  let imageURLChange="";
   const noChange = (element, reviewDes, Stars, images) => {
     const nonChange = (
       <React.Fragment>
-        <p>Star(s){Stars}</p>
+        <p>Star(s):<ReactStars value={Stars} edit={false}  size={24}></ReactStars></p>
         <p>{reviewDes}</p>
         <img src={images} />
       </React.Fragment>
@@ -110,7 +110,7 @@ export const Reviews = () => {
 
   const changeImage = (userImages) => {
     imageURLChange = userImages.target.value;
-    console.log(imageURLChange);
+    
     setReviewsEdited(imageURLChange);
     return imageURLChange;
   };
@@ -122,7 +122,7 @@ export const Reviews = () => {
 
     const reactFragment = (
       <React.Fragment>
-        <p>Star(s){changeStars}</p>
+        <p>Star(s):<ReactStars value={changeStars} edit={false}  size={24}></ReactStars></p>
         <p>{theEvent}</p>
         <img src={changeImages} />
       </React.Fragment>
@@ -165,7 +165,7 @@ export const Reviews = () => {
       const reactFragment = (
         <React.Fragment>
           <>
-            <input
+            <textarea
               key={element}
               type="text"
               defaultValue={des}
@@ -263,11 +263,12 @@ export const Reviews = () => {
       {reviews.map((review) => {
         return (
           <>
+          <br></br>
             <div className="reviews" key={review.id}>
               <p>User Name: {review.user.name} </p>
 
               <div id={review.id}>
-                <p>Star(s):{review.star}</p>
+                <p>Star(s):<ReactStars value={review.star} edit={false}  size={24}></ReactStars></p>
                 <p id="elementButton"></p>
                 {review.reviewDes}{" "}
                 <p>
@@ -277,6 +278,7 @@ export const Reviews = () => {
 
               {getUserId === review.userId ? (
                 <>
+                
                   <p>
                     <Button
                       variant="contained"

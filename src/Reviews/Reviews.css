@@ -15,10 +15,13 @@ img[src=""] { display: none; }
     
 }
 
+ReactStars{
+  pointer-events: none;
+}
 .reviews{
     display: flex;
     flex-direction: column;
-
+    border : solid 2px rgba(139, 139, 139, 0.5)
     
 }
 .title{
