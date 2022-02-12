@@ -83,7 +83,7 @@ export const Reviews = () => {
 
   let change;
   let starChange;
-  let imageURLChange="";
+  let imageURLChange;
   const noChange = (element, reviewDes, Stars, images) => {
     const nonChange = (
       <React.Fragment>
@@ -114,10 +114,38 @@ export const Reviews = () => {
     setReviewsEdited(imageURLChange);
     return imageURLChange;
   };
-  const buttonClick = (e) => {
-    const theEvent = change;
-    const changeStars = starChange;
-    const changeImages = imageURLChange;
+  const buttonClick = (e,des,star,images) => {
+    
+    //edit the review description
+    let theEvent;
+    
+    if(theEvent==undefined){
+      theEvent=des
+    }
+    else if (theEvent){theEvent=change}
+    //edit stars
+    let changeStars
+    
+    if (starChange==undefined){
+      changeStars=star
+    }
+    else if(starChange){changeStars=starChange}
+    //edit the images
+    let changeImages
+   
+    
+    if(imageURLChange==undefined){
+      
+      changeImages=images
+    }
+    // if the user just wants to get rid of the image and keep the review and the starts they put
+    else if(imageURLChange==""){
+      changeImages=""
+    }
+   
+    else if (imageURLChange) {changeImages=imageURLChange}
+    //gets the review id 
+    
     let getReviewId = e;
 
     const reactFragment = (
@@ -183,7 +211,7 @@ export const Reviews = () => {
             <Button
               variant="contained"
               onClick={() => {
-                buttonClick(element, star);
+                buttonClick(element,des ,star,image);
               }}
             >
               done
