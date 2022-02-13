@@ -1,26 +1,36 @@
 .barList{
-    padding-left: 279px;
+    
     color:rgb(255, 255, 255);
    
-    height: 1000px; 
+    
 }
 
 .links{color:rgb(255, 255, 255)}
 .images{
-    background:url("https://cdn.pixabay.com/photo/2018/03/03/03/22/alcohol-3194824_960_720.jpg") no-repeat center ;
-    height: 100%; 
-    margin-left: -9px;
-
-  
-  background-position: center;
-  background-repeat: no-repeat;
+    background: url(https://cdn.pixabay.com/photo/2018/03/03/03/22/alcohol-3194824_960_720.jpg) no-repeat;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
+  
 }
 .box{
-    background:rgba(235, 93, 11, 0.9);
+    background: rgba(235, 93, 11, 0.9);
     width: 300px;
     height: 435px;
-    padding-left: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
-    margin-right: 20px;
+    margin-left: 525px;
+    margin-right: 525px;
+    margin-top: 40px;
+    position: fixed;
+
 }

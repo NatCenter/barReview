@@ -1,0 +1,55 @@
+.registerForm{
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 126px;
+    background-color: #f47614;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    margin-right: 513px;
+    margin-left: 513px;
+    border: 30px;
+    width: 300px;
+    height: 300px;
+    color: white;
+}
+
+.RegisterEmailBackground{
+    background-color: #ffe8d1;
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100%;
+    width:100%;
+}
+.logIn{
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 126px;
+    background-color: #f47614;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    margin-right: 513px;
+    margin-left: 513px;
+    border: 30px;
+    width: 300px;
+    height: 300px;
+    color: white;
+
+    
+}
+.logInBackgroundColor{
+    background-color: #ffe8d1;
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100%;
+    width:100%;
+    
+}
+.link{
+    color:white
+}

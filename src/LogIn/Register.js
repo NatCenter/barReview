@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
-
+import "./logInAndRegister.css"
 export const Register = () => {
   const [user, setUser] = useState({});
   const conflicingDialog = useRef();
@@ -43,7 +43,9 @@ export const Register = () => {
   };
   return (
     <>
-      <form onSubmit={handletheUserRegistion}>
+      <div class="RegisterEmailBackground">
+
+      <form className="registerForm" onSubmit={handletheUserRegistion}>
         <h1>Register Email </h1>
         <p>
           E-mail: <input type="text" id="email" onChange={updateUser} />
@@ -53,6 +55,7 @@ export const Register = () => {
         </p>
         <Button variant="contained" type="submit">Submit</Button>
       </form>
+      </div>
     </>
   );
 };

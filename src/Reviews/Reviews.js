@@ -293,7 +293,7 @@ export const Reviews = () => {
           <>
           <br></br>
             <div className="reviews" key={review.id}>
-              <p>User Name: {review.user.name} </p>
+              <h5>User Name: {review.user.name} </h5>
 
               <div id={review.id}>
                 <p>Star(s):<ReactStars value={review.star} edit={false}  size={24}></ReactStars></p>
