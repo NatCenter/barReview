@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { ApplicationViews } from "../ApplicationViews";
 import Button from "@mui/material/Button";
+import "./logInAndRegister.css"
+import Box from '@mui/material/Box';
 export const LogIn = () => {
   const [email, set] = useState("");
   const existDialog = useRef();
@@ -26,7 +28,14 @@ export const LogIn = () => {
 
   return (
     <>
-      <form onSubmit={handleLogin}>
+    
+    <div className="logInBackgroundColor">
+
+    
+
+      <form className="logIn"onSubmit={handleLogin}>
+       
+       
         <h1>Log In</h1>
         <p htmlFor="inputEmail">
           E-mail:{" "}
@@ -34,9 +43,13 @@ export const LogIn = () => {
         </p>
         <Button variant="contained" type="submit">Enter</Button>
         <p>
-          <Link to="/register" > New User click here to log in</Link>
+          <Link  className="link" to="/register" > New User click here to log in</Link>
         </p>
+        
       </form>
+    
+    </div>
+      
     </>
   );
 };
