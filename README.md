@@ -12,10 +12,10 @@ How does the application work: A user logs in or creates a profile. They see a l
 1. clone down the barView git hub repository in windows terminal 
 2. run npm start to run the web app in a brower of your choice
 3. open another tab in your windows terminal
-4. clone down the barView-api from this link:https://github.com/NatCenter/barReview-api
+4. clone down the barView-api from this link: https://github.com/NatCenter/barReview-api
 5. run json-server database.json -p 8088 -w from where you clone down the api database.
 
 # Difficulties & challenges
-Difficulties & challenges faced during process:The main issue was not having a final end goal for the css and how to make it look more professional. Facing issues when it comes to finding the right solution. Example Asking the right question in google to find the infomation you need to solve the problem. 
+The main issue was not having a final end goal for the css and how to make it look more professional. Facing issues when it comes to finding the right solution. Example Asking the right question in google to find the infomation you need to solve the problem. 
 
 
