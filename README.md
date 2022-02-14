@@ -9,9 +9,9 @@ How does the application work: A user logs in or creates a profile. They see a l
 
 # How to run install and run
 
-1. clone down the barView git hub repository in windows termail 
+1. clone down the barView git hub repository in windows terminal 
 2. run npm start to run the web app in a brower of your choice
-3. open another window in your termail
+3. open another tab in your windows terminal
 4. clone down the barView-api from this link: https://github.com/NatCenter/barView-api
 5. run json-server database.json -p 8088 -w from where you clone down the api database.
 
