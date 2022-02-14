@@ -7,7 +7,7 @@ Purpose and motivation for this project: The main purpose for the project is tha
 
 How does the application work: A user logs in or creates a profile. They see a list of bars in Nashville. They click on a bar on the  that looks interesting to see what kind of reviews they have. Once they are in the bar page they can see a list of all the covid restrictions that they have in place. 
 
-How to install and run the applciation:
+# How to run install and run
 
 Difficulties & challenges faced during process:The main issue was not having a final end goal for the css and how to make it look more professional. Facing issues when it comes to finding the right solution. Example Asking the right question in google to find the infomation you need to solve the problem. 
 
