@@ -14,16 +14,20 @@ export const BarList = () => {
         barList(barArray);
       });
   }, []);
-
+ 
+  
+  
   return (
     <>
        <div className="images">
     <div className="barList">
-     
+    
     <Box className="box">
   
       <h1>Bar list</h1>
       
+     
+     
       {bars.map((barObject) => {
         
         return (
@@ -38,6 +42,8 @@ export const BarList = () => {
             <p>Total Reviews:{barObject.reviews.length}</p>
           </div>
         );
+
+        
       })}
       <Link to={"/barlist/newreview"}>Post your review</Link>
             </Box>
