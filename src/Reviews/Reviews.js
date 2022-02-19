@@ -101,6 +101,7 @@ export const Reviews = () => {
     setReviewsEdited(change);
 
     return change;
+    
   };
   const changeStarts = (numberOfStarts) => {
     starChange = numberOfStarts;
@@ -117,8 +118,8 @@ export const Reviews = () => {
   const buttonClick = (e,des,star,images) => {
     
     //edit the review description
-    let theEvent;
-    
+    let theEvent=change;
+    console.log(des)
     if(theEvent==undefined){
       theEvent=des
     }
@@ -144,7 +145,7 @@ export const Reviews = () => {
     }
    
     else if (imageURLChange) {changeImages=imageURLChange}
-    //gets the review id 
+    //gets the review  id 
     
     let getReviewId = e;
 
