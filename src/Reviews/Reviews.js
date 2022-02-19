@@ -145,7 +145,7 @@ export const Reviews = () => {
     }
    
     else if (imageURLChange) {changeImages=imageURLChange}
-    //gets the review id 
+    //gets the review  id 
     
     let getReviewId = e;
 
