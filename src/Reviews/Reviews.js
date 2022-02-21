@@ -118,6 +118,8 @@ export const Reviews = () => {
   const buttonClick = (e,des,star,images) => {
     
     //edit the review description
+    console.log("rest")
+
     let theEvent=change;
     console.log(des)
     if(theEvent==undefined){
@@ -176,7 +178,12 @@ export const Reviews = () => {
       )
         .then((data) => data.json())
         .then(() => {
-          setReviewsEdited(change);
+          setReviewsEdited(des);
+        }).then(()=>{
+          fetch(`http://localhost:8088/reviews?barId=${barId}&_expand=user`)
+          .then((data) => data.json()).then((parsedData)=>{
+            setUserReviews(parsedData)
+          })
         }),
       []
     );
@@ -187,7 +194,7 @@ export const Reviews = () => {
     if (truOrFalse) {
       truOrFalse = false;
       const element = reviewId;
-      let des = theReviewDes;
+      const des = theReviewDes;
       const star = reviewStar;
       const image = reviewImage;
 
