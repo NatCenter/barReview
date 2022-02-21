@@ -191,7 +191,7 @@ export const Reviews = () => {
       []
     );
   };
-  //renders out the new data that a user addeds
+  //renders out the new data that a user add in
 
   let truOrFalse = true;
   const editReview = (reviewId, theReviewDes, reviewStar, reviewImage) => {

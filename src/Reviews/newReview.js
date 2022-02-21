@@ -79,7 +79,7 @@ export const NewReviews = () => {
         <br></br>
 
         <label>Upload image by copying and pasting the url </label>
-
+  
         <input
           onChange={(evt) => {
             const copy = { ...newReview };
