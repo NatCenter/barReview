@@ -44,6 +44,7 @@ BarReview was made with:
 
 # Thanks to NSS Instructors: 
 Joe Shepherd, Dakota Lambert and Monica Kay Provence
+
 [Cohort 53](https://github.com/NSS-Day-Cohort-53)
 
 
