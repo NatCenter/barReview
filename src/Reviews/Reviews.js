@@ -47,7 +47,7 @@ export const Reviews = () => {
 
   const barMusic = bar.liveMusic;
   let trueOrFalseLiveMusic;
-
+  // shows that a bar as true or false data from the database.
   barMusic === true
     ? (trueOrFalseLiveMusic = "yes")
     : (trueOrFalseLiveMusic = "no");
@@ -76,7 +76,6 @@ export const Reviews = () => {
     ? (barStaffMaskedTrueOrFalse = "yes")
     : (barStaffMaskedTrueOrFalse = "no");
   //editing reviews
-  //react_devtools_backend.js:4061 Warning: render(...): Replacing React-rendered children with a new root component. If you intended to update the children of this node, you should instead have the existing children update their state and render the new components instead of calling ReactDOM.render.
   // to render out two create elements in react by using the react fragment we can render out as many new elements as we want!
   //https://egghead.io/lessons/react-render-two-elements-side-by-side-with-react-fragments
   //use the defaultValue to make the review description in the box editable
@@ -87,7 +86,9 @@ export const Reviews = () => {
   const noChange = (element, reviewDes, Stars, images) => {
     const nonChange = (
       <React.Fragment>
-        <p>Star(s):<ReactStars value={Stars} edit={false}  size={24}></ReactStars></p>
+        <p>
+          Star(s):<ReactStars value={Stars} edit={false} size={24}></ReactStars>
+        </p>
         <p>{reviewDes}</p>
         <img src={images} />
       </React.Fragment>
@@ -101,7 +102,6 @@ export const Reviews = () => {
     setReviewsEdited(change);
 
     return change;
-    
   };
   const changeStarts = (numberOfStarts) => {
     starChange = numberOfStarts;
@@ -111,49 +111,50 @@ export const Reviews = () => {
 
   const changeImage = (userImages) => {
     imageURLChange = userImages.target.value;
-    
+
     setReviewsEdited(imageURLChange);
     return imageURLChange;
   };
-  const buttonClick = (e,des,star,images) => {
-    
-    //edit the review description
-    console.log("rest")
+  const buttonClick = (e, des, star, images) => {
+    //edit the user review description,stars and images.
 
-    let theEvent=change;
-    console.log(des)
-    if(theEvent==undefined){
-      theEvent=des
+    let theEvent = change;
+    // if a user wants to edit only one  aspect of a review
+    if (theEvent == undefined) {
+      theEvent = des;
+    } else if (theEvent) {
+      theEvent = change;
     }
-    else if (theEvent){theEvent=change}
     //edit stars
-    let changeStars
-    
-    if (starChange==undefined){
-      changeStars=star
+    let changeStars;
+
+    if (starChange == undefined) {
+      changeStars = star;
+    } else if (starChange) {
+      changeStars = starChange;
     }
-    else if(starChange){changeStars=starChange}
     //edit the images
-    let changeImages
-   
-    
-    if(imageURLChange==undefined){
-      
-      changeImages=images
+    let changeImages;
+
+    if (imageURLChange == undefined) {
+      changeImages = images;
     }
-    // if the user just wants to get rid of the image and keep the review and the starts they put
-    else if(imageURLChange==""){
-      changeImages=""
+  
+    else if (imageURLChange == "") {
+      changeImages = "";
+    } else if (imageURLChange) {
+      changeImages = imageURLChange;
     }
-   
-    else if (imageURLChange) {changeImages=imageURLChange}
-    //gets the review  id 
-    
+    //gets the review  id
+
     let getReviewId = e;
 
     const reactFragment = (
       <React.Fragment>
-        <p>Star(s):<ReactStars value={changeStars} edit={false}  size={24}></ReactStars></p>
+        <p>
+          Star(s):
+          <ReactStars value={changeStars} edit={false} size={24}></ReactStars>
+        </p>
         <p>{theEvent}</p>
         <img src={changeImages} />
       </React.Fragment>
@@ -179,15 +180,18 @@ export const Reviews = () => {
         .then((data) => data.json())
         .then(() => {
           setReviewsEdited(des);
-        }).then(()=>{
+        })
+        .then(() => {
           fetch(`http://localhost:8088/reviews?barId=${barId}&_expand=user`)
-          .then((data) => data.json()).then((parsedData)=>{
-            setUserReviews(parsedData)
-          })
+            .then((data) => data.json())
+            .then((parsedData) => {
+              setUserReviews(parsedData);
+            });
         }),
       []
     );
   };
+  //renders out the new data that a user addeds
 
   let truOrFalse = true;
   const editReview = (reviewId, theReviewDes, reviewStar, reviewImage) => {
@@ -219,7 +223,7 @@ export const Reviews = () => {
             <Button
               variant="contained"
               onClick={() => {
-                buttonClick(element,des ,star,image);
+                buttonClick(element, des, star, image);
               }}
             >
               done
@@ -242,7 +246,7 @@ export const Reviews = () => {
     }
   };
 
-  // slide show react tut
+  // slide show react tutorial
   //https://tinloof.com/blog/how-to-build-an-auto-play-slideshow-with-react
 
   const ShowBar = bar.imageBars?.map((images) => {
@@ -299,12 +303,19 @@ export const Reviews = () => {
       {reviews.map((review) => {
         return (
           <>
-          <br></br>
+            <br></br>
             <div className="reviews" key={review.id}>
               <h5>User Name: {review.user.name} </h5>
 
               <div id={review.id}>
-                <p>Star(s):<ReactStars value={review.star} edit={false}  size={24}></ReactStars></p>
+                <p>
+                  Star(s):
+                  <ReactStars
+                    value={review.star}
+                    edit={false}
+                    size={24}
+                  ></ReactStars>
+                </p>
                 <p id="elementButton"></p>
                 {review.reviewDes}{" "}
                 <p>
@@ -314,7 +325,6 @@ export const Reviews = () => {
 
               {getUserId === review.userId ? (
                 <>
-                
                   <p>
                     <Button
                       variant="contained"
