@@ -73,13 +73,13 @@ export const NewReviews = () => {
           }}
         >
           {barList.map((bar) => {
-            return (<option value={bar.id}>{bar.barName}</option>);
+            return <option value={bar.id}>{bar.barName}</option>;
           })}
         </select>
         <br></br>
 
         <label>Upload image by copying and pasting the url </label>
-
+  
         <input
           onChange={(evt) => {
             const copy = { ...newReview };
