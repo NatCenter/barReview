@@ -29,9 +29,19 @@ Open http://localhost:3000 to view it in your browser.
 The page will reload when you make changes.
 You may also see any errors in the console.
 
+# Technologies Used
+BarReview was made with:
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
+
+
 
 # User Experience
 ![Demo](https://user-images.githubusercontent.com/34755641/155005931-5eda3c70-5eb6-4297-9d17-99d4265ec2d5.gif)
+
+
+
 
 
 
