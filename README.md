@@ -9,7 +9,7 @@ How does the application work: A user logs in or creates a profile. They see a l
 
 # How to run install and run
 
-1. clone down the barView git hub repository in windows terminal 
+1. clone down the barView git hub repository in windows terminal: https://github.com/NatCenter/barReview.git
 2. run npm start to run the web app in a brower of your choice
 3. open another tab in your windows terminal
 4. clone down the barView-api from this link: [Here ](https://github.com/NatCenter/barReview-api)
@@ -17,17 +17,6 @@ How does the application work: A user logs in or creates a profile. They see a l
 
 # Difficulties & challenges
 The biggest difficulty was making all the forms dynamically rendered and being able to edited by user input.
-
-# Getting Started with Create React App
-This project was bootstrapped with Create React App.
-
-# npm start
-
-Runs the app in the development mode.
-Open http://localhost:3000 to view it in your browser.
-
-The page will reload when you make changes.
-You may also see any errors in the console.
 
 # Technologies Used
 BarReview was made with:
